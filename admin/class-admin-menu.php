@@ -148,11 +148,18 @@ class WPHM_Admin_Menu {
 	 */
 	public function maybe_redirect_to_docs(): void {
 		if (
-			isset( $_GET['page'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			isset( $_GET['page'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing param, no state change.
 			'wphm-documentation' === sanitize_key( wp_unslash( $_GET['page'] ) ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			current_user_can( self::CAPABILITY )
 		) {
-			wp_redirect( 'https://fzihak.github.io/plugin-health-monitor/' ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
+			add_filter(
+				'allowed_redirect_hosts',
+				static function ( $hosts ) {
+					$hosts[] = 'fzihak.github.io';
+					return $hosts;
+				}
+			);
+			wp_safe_redirect( 'https://fzihak.github.io/plugin-health-monitor/' );
 			exit;
 		}
 	}
@@ -160,13 +167,21 @@ class WPHM_Admin_Menu {
 	/**
 	 * Fallback render callback for the Documentation submenu page.
 	 *
-	 * In practice the admin_init redirect fires first; this is a safety net.
+	 * In practice the admin_init redirect fires first; this JS redirect
+	 * is a safety net for cases where headers are already sent.
 	 *
 	 * @return void
 	 */
 	public function render_docs_redirect(): void {
-		wp_redirect( 'https://fzihak.github.io/plugin-health-monitor/' ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
-		exit;
+		if ( ! current_user_can( self::CAPABILITY ) ) {
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+		}
+		?>
+		<div class="wrap">
+			<p><?php esc_html_e( 'Redirecting to documentation…', 'wp-plugin-health-monitor' ); ?> <a href="https://fzihak.github.io/plugin-health-monitor/"><?php esc_html_e( 'Click here if not redirected.', 'wp-plugin-health-monitor' ); ?></a></p>
+		</div>
+		<script>window.location.replace( 'https://fzihak.github.io/plugin-health-monitor/' );</script>
+		<?php
 	}
 
 	/**
