@@ -43,6 +43,16 @@ class WPHM_Admin_Menu {
 	const NONCE_ACTION = 'wphm_ajax_nonce';
 
 	/**
+	 * Base64-encoded SVG icon for the admin menu.
+	 *
+	 * Radar screen with concentric rings and sweep line.
+	 * Monochrome so WordPress admin colour schemes tint it automatically.
+	 *
+	 * @var string
+	 */
+	const MENU_ICON = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iOSIgc3Ryb2tlPSIjYTdhYWFkIiBzdHJva2Utd2lkdGg9IjEuMiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjYiIHN0cm9rZT0iI2E3YWFhZCIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBzdHJva2UtZGFzaGFycmF5PSIxLjUgMS41Ii8+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMyIgc3Ryb2tlPSIjYTdhYWFkIiBzdHJva2Utd2lkdGg9IjAuOCIgZmlsbD0ibm9uZSIvPjxsaW5lIHgxPSIxMCIgeTE9IjEwIiB4Mj0iMTciIHkyPSI0IiBzdHJva2U9IiNhN2FhYWQiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIxIiBmaWxsPSIjYTdhYWFkIi8+PGNpcmNsZSBjeD0iMTQiIGN5PSI2LjUiIHI9IjEuMiIgZmlsbD0iI2E3YWFhZCIgb3BhY2l0eT0iMC43Ii8+PC9zdmc+';
+
+	/**
 	 * Register all WordPress hooks used by this class.
 	 *
 	 * @return void
@@ -72,7 +82,7 @@ class WPHM_Admin_Menu {
 			self::CAPABILITY,
 			self::MENU_SLUG,
 			array( $this, 'render_dashboard' ),
-			'dashicons-heart',
+			self::MENU_ICON,
 			80
 		);
 
