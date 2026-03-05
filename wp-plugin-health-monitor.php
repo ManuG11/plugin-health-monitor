@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP Plugin Health Monitor
- * Plugin URI:  https://wordpress.org/plugins/wp-plugin-health-monitor/
+ * Plugin URI:  https://github.com/fzihak/plugin-health-monitor
  * Description: Helps site admins understand plugin conflicts, performance issues, PHP compatibility problems, and debug log errors — all from within the WordPress admin.
  * Version:     1.0.0
  * Requires at least: 6.3
