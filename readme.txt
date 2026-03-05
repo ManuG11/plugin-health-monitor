@@ -1,10 +1,10 @@
 === WP Plugin Health Monitor ===
-Contributors: wppluginhealthmonitor
+Contributors: fzihak
 Tags: plugins, health, conflicts, performance, debug
-Requires at least: 6.0
+Requires at least: 6.3
 Tested up to: 6.7
 Requires PHP: 8.1
-Stable tag: 1.2.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,24 +67,14 @@ The DB query count only works when `SAVEQUERIES` is already defined as `true` in
 
 == Screenshots ==
 
-1. Dashboard with health score gauge and breakdown cards.
-2. Plugin Conflicts detection page.
-3. Performance Insights with autoloaded options table.
-4. PHP Compatibility check results.
-5. Debug Log Analyzer with error summary.
+1. Dashboard with health score gauge and module summary cards.
+2. Plugin Conflicts page showing duplicate script handles and hook collisions.
+3. Performance Insights panel with asset count, DB query count, and autoload size.
+4. PHP Compatibility checker with per-plugin PHP version requirements.
+5. Debug Log Analyzer with errors grouped by plugin and severity.
+6. Health Report Generator — full single-page printable report.
 
 == Changelog ==
-
-= 1.2.0 =
-* Complete UI overhaul: enterprise-grade design system with CSS custom properties.
-* New page header component with per-module colour-coded icons.
-* Improved alert and badge components across all module views.
-* Updated dashboard dimension bars, module cards, and ring gauge aesthetics.
-* Skeleton loading states and refined table styling.
-* Performance, Conflicts, PHP Compatibility, Debug Log, and Report views fully redesigned.
-* Code block component for debug setup guide with terminal decoration.
-* Print stylesheet improvements for report download.
-* Full responsive layout at 1024px, 782px, and 480px breakpoints.
 
 = 1.0.0 =
 * Initial release.
@@ -97,9 +87,6 @@ The DB query count only works when `SAVEQUERIES` is already defined as `true` in
 * WP-CLI command support.
 
 == Upgrade Notice ==
-
-= 1.2.0 =
-Complete UI redesign with enterprise-grade styling. No breaking changes — safe to update.
 
 = 1.0.0 =
 Initial release.

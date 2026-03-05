@@ -50,6 +50,7 @@ class WPHM_Admin_Menu {
 	public function register_hooks(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu_pages' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'do_enqueue_assets' ) );
+		add_action( 'admin_init', array( $this, 'maybe_redirect_to_docs' ) );
 
 		// AJAX handlers.
 		add_action( 'wp_ajax_wphm_run_scan', array( $this, 'ajax_run_scan' ) );
@@ -129,6 +130,43 @@ class WPHM_Admin_Menu {
 			'wphm-report',
 			array( $this, 'render_report' )
 		);
+
+		add_submenu_page(
+			self::MENU_SLUG,
+			__( 'Documentation', 'wp-plugin-health-monitor' ),
+			__( 'Documentation ↗', 'wp-plugin-health-monitor' ),
+			self::CAPABILITY,
+			'wphm-documentation',
+			array( $this, 'render_docs_redirect' )
+		);
+	}
+
+	/**
+	 * Redirect to documentation site when the Documentation submenu is clicked.
+	 *
+	 * @return void
+	 */
+	public function maybe_redirect_to_docs(): void {
+		if (
+			isset( $_GET['page'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			'wphm-documentation' === sanitize_key( wp_unslash( $_GET['page'] ) ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			current_user_can( self::CAPABILITY )
+		) {
+			wp_redirect( 'https://fzihak.github.io/plugin-health-monitor/' ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
+			exit;
+		}
+	}
+
+	/**
+	 * Fallback render callback for the Documentation submenu page.
+	 *
+	 * In practice the admin_init redirect fires first; this is a safety net.
+	 *
+	 * @return void
+	 */
+	public function render_docs_redirect(): void {
+		wp_redirect( 'https://fzihak.github.io/plugin-health-monitor/' ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
+		exit;
 	}
 
 	/**

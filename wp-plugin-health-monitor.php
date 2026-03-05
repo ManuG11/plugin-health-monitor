@@ -3,11 +3,11 @@
  * Plugin Name: WP Plugin Health Monitor
  * Plugin URI:  https://wordpress.org/plugins/wp-plugin-health-monitor/
  * Description: Helps site admins understand plugin conflicts, performance issues, PHP compatibility problems, and debug log errors — all from within the WordPress admin.
- * Version:     1.2.0
- * Requires at least: 6.0
+ * Version:     1.0.0
+ * Requires at least: 6.3
  * Requires PHP: 8.1
- * Author:      WP Plugin Health Monitor Contributors
- * Author URI:  https://wordpress.org/plugins/wp-plugin-health-monitor/
+ * Author:      Foysal Zihak
+ * Author URI:  https://github.com/fzihak
  * License:     GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wp-plugin-health-monitor
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @var string
  */
-define( 'WPHM_VERSION', '1.2.0' );
+define( 'WPHM_VERSION', '1.0.0' );
 
 /**
  * Plugin directory path with trailing slash.
@@ -143,6 +143,23 @@ function wphm_deactivate() {
 	delete_transient( 'wphm_health_score' );
 }
 register_deactivation_hook( __FILE__, 'wphm_deactivate' );
+
+/**
+ * Add a Documentation link in the Plugins list (under the plugin name).
+ *
+ * @param array $links Existing action links.
+ * @return array
+ */
+function wphm_plugin_action_links( array $links ): array {
+	$doc_link = sprintf(
+		'<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
+		'https://fzihak.github.io/plugin-health-monitor/',
+		esc_html__( 'Documentation', 'wp-plugin-health-monitor' )
+	);
+	array_unshift( $links, $doc_link );
+	return $links;
+}
+add_filter( 'plugin_action_links_' . WPHM_PLUGIN_BASENAME, 'wphm_plugin_action_links' );
 
 /**
  * Register WP-CLI commands when WP-CLI is available.
