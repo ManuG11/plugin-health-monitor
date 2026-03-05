@@ -165,11 +165,11 @@ class WPHM_Admin_Menu {
 	 * @return bool
 	 */
 	private function is_wphm_page_request(): bool {
-		if ( ! isset( $_GET['page'] ) ) {
+		if ( ! isset( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing check, no state change.
 			return false;
 		}
 
-		$page = sanitize_key( wp_unslash( $_GET['page'] ) );
+		$page = sanitize_key( wp_unslash( $_GET['page'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$allowed_pages = array(
 			self::MENU_SLUG,
