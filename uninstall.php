@@ -16,7 +16,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 delete_option( 'wphm_version' );
 
 // Delete all transients.
-$transients = array(
+$wphm_transients = array(
 	'wphm_last_report',
 	'wphm_conflict_results',
 	'wphm_performance_results',
@@ -26,6 +26,6 @@ $transients = array(
 	'wphm_health_score',
 );
 
-foreach ( $transients as $transient ) {
-	delete_transient( $transient );
+foreach ( $wphm_transients as $wphm_transient ) {
+	delete_transient( $wphm_transient );
 }

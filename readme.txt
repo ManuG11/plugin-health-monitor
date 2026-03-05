@@ -2,13 +2,13 @@
 Contributors: fzihak
 Tags: plugins, health, conflicts, performance, debug
 Requires at least: 6.3
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 8.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Helps site admins understand plugin conflicts, performance issues, PHP compatibility problems, and debug log errors — all from within the WordPress admin.
+Pinpoint plugin conflicts, performance issues, PHP compat problems, and debug log errors — all from one WordPress admin dashboard.
 
 == Description ==
 

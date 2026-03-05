@@ -89,20 +89,6 @@ function wphm_init() {
 add_action( 'plugins_loaded', 'wphm_init' );
 
 /**
- * Load plugin textdomain for translations.
- *
- * @return void
- */
-function wphm_load_textdomain() {
-	load_plugin_textdomain(
-		'wp-plugin-health-monitor',
-		false,
-		dirname( WPHM_PLUGIN_BASENAME ) . '/languages'
-	);
-}
-add_action( 'init', 'wphm_load_textdomain' );
-
-/**
  * Run on plugin activation.
  *
  * Sets initial options and flushes rewrite rules if needed.

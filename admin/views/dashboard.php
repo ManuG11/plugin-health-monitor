@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$scorer_instance = new WPHM_Health_Scorer();
-$score_label     = $scorer_instance->get_score_label( $score['total'] );
-$score_class     = $scorer_instance->get_score_css_class( $score['total'] );
-$total           = absint( $score['total'] );
+$wphm_scorer      = new WPHM_Health_Scorer();
+$wphm_score_label = $wphm_scorer->get_score_label( $score['total'] );
+$wphm_score_class = $wphm_scorer->get_score_css_class( $score['total'] );
+$wphm_total       = absint( $score['total'] );
 
 // Dimension data for JS.
-$dimensions = array(
+$wphm_dimensions = array(
 	array(
 		'key'   => 'plugins',
 		'label' => __( 'Plugins', 'wp-plugin-health-monitor' ),
@@ -71,8 +71,8 @@ $dimensions = array(
 		<div class="wphm-dash__hero">
 			<div class="wphm-dash__hero-left">
 				<div class="wphm-dash__ring-wrap" id="wphm-ring-wrap"
-					data-score="<?php echo $total; ?>"
-					data-class="<?php echo esc_attr( $score_class ); ?>">
+					data-score="<?php echo absint( $wphm_total ); ?>"
+					data-class="<?php echo esc_attr( $wphm_score_class ); ?>">
 					<svg viewBox="0 0 200 200" class="wphm-dash__ring-svg">
 						<defs>
 							<linearGradient id="wphm-ring-grad-excellent" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -100,7 +100,7 @@ $dimensions = array(
 							fill="none" stroke="#e8ecf0" stroke-width="12" />
 						<circle class="wphm-dash__ring-progress" cx="100" cy="100" r="88"
 							fill="none"
-							stroke="url(#wphm-ring-grad-<?php echo esc_attr( $score_class ); ?>)"
+							stroke="url(#wphm-ring-grad-<?php echo esc_attr( $wphm_score_class ); ?>)"
 							stroke-width="12"
 							stroke-linecap="round"
 							stroke-dasharray="0 553"
@@ -108,8 +108,8 @@ $dimensions = array(
 					</svg>
 					<div class="wphm-dash__ring-center">
 						<span class="wphm-dash__ring-num" id="wphm-ring-num">0</span>
-						<span class="wphm-dash__ring-label wphm-dash__ring-label--<?php echo esc_attr( $score_class ); ?>"
-							id="wphm-ring-label"><?php echo esc_html( $score_label ); ?></span>
+					<span class="wphm-dash__ring-label wphm-dash__ring-label--<?php echo esc_attr( $wphm_score_class ); ?>"
+						id="wphm-ring-label"><?php echo esc_html( $wphm_score_label ); ?></span>
 					</div>
 				</div>
 
@@ -128,30 +128,30 @@ $dimensions = array(
 
 				<!-- Dimension Bars -->
 				<div class="wphm-dash__dims" id="wphm-dims">
-					<?php foreach ( $dimensions as $dim ) :
-						$pct       = $dim['max'] > 0 ? round( ( $dim['val'] / $dim['max'] ) * 100 ) : 0;
-						$is_nodata = ! empty( $dim['no_query'] );
-						$raw_text  = $dim['key'] === 'autoload'
-							? esc_html( size_format( $dim['raw'], 1 ) ) . ' ' . esc_html( $dim['unit'] )
-							: absint( $dim['raw'] ) . ' ' . esc_html( $dim['unit'] );
-						if ( $is_nodata && $dim['raw'] === 0 ) {
-							$raw_text = esc_html__( 'SAVEQUERIES not enabled', 'wp-plugin-health-monitor' );
+				<?php foreach ( $wphm_dimensions as $wphm_dim ) :
+					$wphm_pct    = $wphm_dim['max'] > 0 ? round( ( $wphm_dim['val'] / $wphm_dim['max'] ) * 100 ) : 0;
+					$wphm_nodata = ! empty( $wphm_dim['no_query'] );
+					$wphm_raw    = $wphm_dim['key'] === 'autoload'
+						? size_format( $wphm_dim['raw'], 1 ) . ' ' . $wphm_dim['unit']
+						: absint( $wphm_dim['raw'] ) . ' ' . $wphm_dim['unit'];
+					if ( $wphm_nodata && 0 === $wphm_dim['raw'] ) {
+						$wphm_raw = __( 'SAVEQUERIES not enabled', 'wp-plugin-health-monitor' );
 						}
 					?>
-					<div class="wphm-dash__dim" data-key="<?php echo esc_attr( $dim['key'] ); ?>">
-						<div class="wphm-dash__dim-top">
-							<span class="wphm-dash__dim-icon" style="color:<?php echo esc_attr( $dim['color'] ); ?>">
-								<span class="dashicons dashicons-<?php echo esc_attr( $dim['icon'] ); ?>"></span>
-							</span>
-							<span class="wphm-dash__dim-name"><?php echo esc_html( $dim['label'] ); ?></span>
-							<span class="wphm-dash__dim-val">
-								<strong><?php echo absint( $dim['val'] ); ?></strong><span class="wphm-dash__dim-max">/<?php echo absint( $dim['max'] ); ?></span>
-							</span>
-						</div>
-						<div class="wphm-dash__dim-bar">
-							<div class="wphm-dash__dim-fill" style="width:<?php echo $pct; ?>%;background:<?php echo esc_attr( $dim['color'] ); ?>"></div>
-						</div>
-						<span class="wphm-dash__dim-detail"><?php echo $raw_text; ?></span>
+				<div class="wphm-dash__dim" data-key="<?php echo esc_attr( $wphm_dim['key'] ); ?>">
+					<div class="wphm-dash__dim-top">
+						<span class="wphm-dash__dim-icon" style="color:<?php echo esc_attr( $wphm_dim['color'] ); ?>">
+							<span class="dashicons dashicons-<?php echo esc_attr( $wphm_dim['icon'] ); ?>"></span>
+						</span>
+						<span class="wphm-dash__dim-name"><?php echo esc_html( $wphm_dim['label'] ); ?></span>
+						<span class="wphm-dash__dim-val">
+							<strong><?php echo absint( $wphm_dim['val'] ); ?></strong><span class="wphm-dash__dim-max">/<?php echo absint( $wphm_dim['max'] ); ?></span>
+						</span>
+					</div>
+					<div class="wphm-dash__dim-bar">
+						<div class="wphm-dash__dim-fill" style="width:<?php echo absint( $wphm_pct ); ?>%;background:<?php echo esc_attr( $wphm_dim['color'] ); ?>"></div>
+					</div>
+					<span class="wphm-dash__dim-detail"><?php echo esc_html( $wphm_raw ); ?></span>
 					</div>
 					<?php endforeach; ?>
 				</div>

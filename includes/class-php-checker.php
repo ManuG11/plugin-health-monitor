@@ -185,13 +185,17 @@ class WPHM_PHP_Checker {
 		}
 
 		// Read only the first 8KB — the header should be at the top.
-		$handle = fopen( $real_path, 'r' );
-		if ( false === $handle ) {
-			return '';
+		global $wp_filesystem;
+		if ( empty( $wp_filesystem ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
 		}
 
-		$header = fread( $handle, 8192 );
-		fclose( $handle );
+		$content = $wp_filesystem->get_contents( $real_path );
+		if ( false === $content ) {
+			return '';
+		}
+		$header = substr( $content, 0, 8192 );
 
 		if ( preg_match( '/^Requires PHP:\s*(.+)$/mi', $header, $matches ) ) {
 			return trim( $matches[1] );

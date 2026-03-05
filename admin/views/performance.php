@@ -71,11 +71,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		global $wpdb;
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$autoloaded = $wpdb->get_results(
+		$wphm_autoloaded = $wpdb->get_results(
 			"SELECT option_name, LENGTH(option_value) AS size FROM {$wpdb->options} WHERE autoload = 'yes' ORDER BY size DESC LIMIT 20"
 		);
 
-		if ( $autoloaded ) :
+		if ( $wphm_autoloaded ) :
 			?>
 			<table class="wphm-table">
 				<thead>
@@ -85,10 +85,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ( $autoloaded as $option ) : ?>
-						<tr>
-							<td><?php echo esc_html( $option->option_name ); ?></td>
-							<td><?php echo esc_html( size_format( absint( $option->size ), 1 ) ); ?></td>
+				<?php foreach ( $wphm_autoloaded as $wphm_option ) : ?>
+					<tr>
+						<td><?php echo esc_html( $wphm_option->option_name ); ?></td>
+						<td><?php echo esc_html( size_format( absint( $wphm_option->size ), 1 ) ); ?></td>
 						</tr>
 					<?php endforeach; ?>
 				</tbody>

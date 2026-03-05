@@ -194,9 +194,15 @@ class WPHM_Health_Scorer {
 	public function get_autoload_size(): int {
 		global $wpdb;
 
-		$result = $wpdb->get_var(
-			"SELECT SUM(LENGTH(option_value)) FROM {$wpdb->options} WHERE autoload = 'yes'"
-		);
+		$cache_key = 'wphm_autoload_size';
+		$result    = wp_cache_get( $cache_key, 'wphm' );
+		if ( false === $result ) {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+			$result = $wpdb->get_var(
+				"SELECT SUM(LENGTH(option_value)) FROM {$wpdb->options} WHERE autoload = 'yes'"
+			);
+			wp_cache_set( $cache_key, $result, 'wphm', HOUR_IN_SECONDS );
+		}
 
 		return $result ? absint( $result ) : 0;
 	}

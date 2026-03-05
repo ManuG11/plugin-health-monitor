@@ -149,39 +149,34 @@ class WPHM_Debug_Log_Reader {
 	 * @return array Array of log lines (most recent last).
 	 */
 	private function read_log_tail( string $path ): array {
-		$file_size = filesize( $path );
-		if ( false === $file_size || 0 === $file_size ) {
+		global $wp_filesystem;
+		if ( empty( $wp_filesystem ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
+		$content = $wp_filesystem->get_contents( $path );
+		if ( false === $content || '' === $content ) {
 			return array();
 		}
 
-		$handle = fopen( $path, 'r' );
-		if ( false === $handle ) {
-			return array();
-		}
-
-		$offset = 0;
-		if ( $file_size > self::MAX_READ_BYTES ) {
-			$offset = $file_size - self::MAX_READ_BYTES;
-		}
-
-		if ( $offset > 0 ) {
-			fseek( $handle, $offset );
+		// For very large files, take only the tail.
+		if ( strlen( $content ) > self::MAX_READ_BYTES ) {
+			$content = substr( $content, -self::MAX_READ_BYTES );
 			// Discard partial first line.
-			fgets( $handle );
-		}
-
-		$lines = array();
-		while ( ! feof( $handle ) ) {
-			$line = fgets( $handle );
-			if ( false !== $line ) {
-				$line = trim( $line );
-				if ( '' !== $line ) {
-					$lines[] = $line;
-				}
+			$newline = strpos( $content, "\n" );
+			if ( false !== $newline ) {
+				$content = substr( $content, $newline + 1 );
 			}
 		}
 
-		fclose( $handle );
+		$lines = array();
+		foreach ( explode( "\n", $content ) as $line ) {
+			$line = trim( $line );
+			if ( '' !== $line ) {
+				$lines[] = $line;
+			}
+		}
 
 		return $lines;
 	}
