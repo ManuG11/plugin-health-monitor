@@ -20,12 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="dashicons dashicons-editor-code"></span>
 			</div>
 			<div class="wphm-page-header__text">
-				<h1 class="wphm-page-header__title"><?php esc_html_e( 'PHP Compatibility', 'wp-plugin-health-monitor' ); ?></h1>
+				<h1 class="wphm-page-header__title"><?php esc_html_e( 'PHP Compatibility', 'health-radar' ); ?></h1>
 				<p class="wphm-page-header__desc">
 					<?php
 					printf(
 						/* translators: %s: Current PHP version. */
-						esc_html__( 'Check if your plugins are compatible with your current PHP version (%s).', 'wp-plugin-health-monitor' ),
+						esc_html__( 'Check if your plugins are compatible with your current PHP version (%s).', 'health-radar' ),
 						esc_html( PHP_VERSION )
 					);
 					?>
@@ -37,9 +37,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				class="wphm-btn-primary"
 				data-wphm-action="wphm_get_php_compat"
 				data-wphm-target="wphm-php-compat-results"
-				data-wphm-label="<?php esc_attr_e( 'Check Compatibility', 'wp-plugin-health-monitor' ); ?>">
+				data-wphm-label="<?php esc_attr_e( 'Check Compatibility', 'health-radar' ); ?>">
 				<span class="dashicons dashicons-yes-alt"></span>
-				<?php esc_html_e( 'Check Compatibility', 'wp-plugin-health-monitor' ); ?>
+				<?php esc_html_e( 'Check Compatibility', 'health-radar' ); ?>
 			</button>
 		</div>
 	</div>
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="wphm-alert wphm-alert--info">
 			<span class="dashicons dashicons-info-outline"></span>
 			<div class="wphm-alert__body">
-				<p><?php esc_html_e( 'Click "Check Compatibility" to scan all plugins against your current PHP version.', 'wp-plugin-health-monitor' ); ?></p>
+				<p><?php esc_html_e( 'Click "Check Compatibility" to scan all plugins against your current PHP version.', 'health-radar' ); ?></p>
 			</div>
 		</div>
 	</div>

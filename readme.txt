@@ -38,7 +38,7 @@ This plugin makes no external HTTP requests. All data stays on your server. No t
 
 == Installation ==
 
-1. Upload the `wp-plugin-health-monitor` folder to `/wp-content/plugins/`.
+1. Upload the `health-radar` folder to `/wp-content/plugins/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate to **Health Radar** in the admin sidebar.
 4. Click **Run Full Scan** to generate your first health report.

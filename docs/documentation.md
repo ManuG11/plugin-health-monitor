@@ -65,7 +65,7 @@ Health Radar is a diagnostic plugin for WordPress site administrators and develo
 
 ### Manual Upload
 
-1. Download `wp-plugin-health-monitor.zip` from the [Releases page](https://github.com/fzihak/plugin-health-monitor/releases)
+1. Download `health-radar.zip` from the [Releases page](https://github.com/fzihak/plugin-health-monitor/releases)
 2. Go to **Plugins → Add New Plugin → Upload Plugin**
 3. Select the ZIP file and click **Install Now**
 4. Click **Activate Plugin**
@@ -73,7 +73,7 @@ Health Radar is a diagnostic plugin for WordPress site administrators and develo
 ### Via WP-CLI
 
 ```bash
-wp plugin install wp-plugin-health-monitor --activate
+wp plugin install health-radar --activate
 ```
 
 ### Server Requirements
@@ -104,7 +104,7 @@ After activation:
 
 ### 4.1 Dashboard
 
-**URL:** `/wp-admin/admin.php?page=wp-plugin-health-monitor`
+**URL:** `/wp-admin/admin.php?page=wphm-dashboard`
 
 The Dashboard provides a high-level overview of your site's plugin health.
 
@@ -472,7 +472,7 @@ Yes. Use `wp healthmonitor report --format=json` to get machine-readable output 
 | `WPHM_VERSION` | `1.0.0` | Plugin version |
 | `WPHM_PLUGIN_DIR` | Path with trailing slash | Absolute path to plugin directory |
 | `WPHM_PLUGIN_URL` | URL with trailing slash | URL to plugin directory |
-| `WPHM_PLUGIN_BASENAME` | `wp-plugin-health-monitor/wp-plugin-health-monitor.php` | Plugin basename |
+| `WPHM_PLUGIN_BASENAME` | `health-radar/health-radar.php` | Plugin basename |
 | `WPHM_MIN_PHP` | `8.1` | Minimum required PHP version |
 
 ### Class Overview
@@ -501,7 +501,7 @@ Yes. Use `wp healthmonitor report --format=json` to get machine-readable output 
 ### Text Domain
 
 ```
-wp-plugin-health-monitor
+health-radar
 ```
 
 Translation files go in the `languages/` directory. Follows standard WordPress i18n conventions using `__()`, `esc_html__()`, and `_e()`.

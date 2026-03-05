@@ -10,7 +10,7 @@
  * Author URI:  https://github.com/fzihak
  * License:     GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wp-plugin-health-monitor
+ * Text Domain: health-radar
  * Domain Path: /languages
  *
  * @package WP_Plugin_Health_Monitor
@@ -101,10 +101,10 @@ function wphm_activate() {
 		wp_die(
 			sprintf(
 				/* translators: %s: Minimum PHP version required. */
-				esc_html__( 'Health Radar requires PHP %s or higher.', 'wp-plugin-health-monitor' ),
+				esc_html__( 'Health Radar requires PHP %s or higher.', 'health-radar' ),
 				esc_html( WPHM_MIN_PHP )
 			),
-			esc_html__( 'Plugin Activation Error', 'wp-plugin-health-monitor' ),
+			esc_html__( 'Plugin Activation Error', 'health-radar' ),
 			array( 'back_link' => true )
 		);
 	}
@@ -140,7 +140,7 @@ function wphm_plugin_action_links( array $links ): array {
 	$doc_link = sprintf(
 		'<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
 		'https://fzihak.github.io/plugin-health-monitor/',
-		esc_html__( 'Documentation', 'wp-plugin-health-monitor' )
+		esc_html__( 'Documentation', 'health-radar' )
 	);
 	array_unshift( $links, $doc_link );
 	return $links;

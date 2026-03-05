@@ -145,7 +145,7 @@ Scripts load twice. Hooks collide. Deprecated functions throw warnings. PHP vers
 <br>
 
 1. Download the latest release from the [Releases](../../releases) page
-2. Upload the `wp-plugin-health-monitor` folder to `/wp-content/plugins/`
+2. Upload the `health-radar` folder to `/wp-content/plugins/`
 3. Activate from the **Plugins** screen in WordPress
 
 </details>
@@ -155,7 +155,7 @@ Scripts load twice. Hooks collide. Deprecated functions throw warnings. PHP vers
 <br>
 
 ```bash
-wp plugin install wp-plugin-health-monitor --activate
+wp plugin install health-radar --activate
 ```
 
 </details>

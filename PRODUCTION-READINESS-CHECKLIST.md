@@ -41,7 +41,7 @@ Use this checklist before each public release.
 ## 5) Internationalization (i18n)
 
 - [ ] **User-visible strings wrapped** in translation functions (`__`, `esc_html__`, etc.).
-- [ ] **Text domain consistent**: `wp-plugin-health-monitor`.
+- [ ] **Text domain consistent**: `health-radar`.
 - [ ] **Translator comments added** where placeholders are used.
 
 ## 6) Data Integrity & Reporting Accuracy

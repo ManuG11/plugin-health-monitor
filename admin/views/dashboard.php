@@ -23,43 +23,43 @@ $wphm_total       = absint( $score['total'] );
 $wphm_dimensions = array(
 	array(
 		'key'   => 'plugins',
-		'label' => __( 'Plugins', 'wp-plugin-health-monitor' ),
+		'label' => __( 'Plugins', 'health-radar' ),
 		'icon'  => 'admin-plugins',
 		'val'   => absint( $score['plugins'] ),
 		'max'   => WPHM_Health_Scorer::PLUGIN_MAX,
 		'raw'   => absint( $score['raw']['plugin_count'] ),
-		'unit'  => __( 'active', 'wp-plugin-health-monitor' ),
+		'unit'  => __( 'active', 'health-radar' ),
 		'color' => '#3858e9',
 	),
 	array(
 		'key'   => 'assets',
-		'label' => __( 'Assets', 'wp-plugin-health-monitor' ),
+		'label' => __( 'Assets', 'health-radar' ),
 		'icon'  => 'media-code',
 		'val'   => absint( $score['assets'] ),
 		'max'   => WPHM_Health_Scorer::ASSET_MAX,
 		'raw'   => absint( $score['raw']['asset_count'] ),
-		'unit'  => __( 'enqueued', 'wp-plugin-health-monitor' ),
+		'unit'  => __( 'enqueued', 'health-radar' ),
 		'color' => '#00a76f',
 	),
 	array(
 		'key'      => 'db_queries',
-		'label'    => __( 'DB Queries', 'wp-plugin-health-monitor' ),
+		'label'    => __( 'DB Queries', 'health-radar' ),
 		'icon'     => 'database',
 		'val'      => absint( $score['db_queries'] ),
 		'max'      => WPHM_Health_Scorer::DB_QUERY_MAX,
 		'raw'      => absint( $score['raw']['db_query_count'] ),
-		'unit'     => __( 'queries', 'wp-plugin-health-monitor' ),
+		'unit'     => __( 'queries', 'health-radar' ),
 		'color'    => '#8e33ff',
 		'no_query' => ! defined( 'SAVEQUERIES' ) || ! SAVEQUERIES,
 	),
 	array(
 		'key'   => 'autoload',
-		'label' => __( 'Autoload', 'wp-plugin-health-monitor' ),
+		'label' => __( 'Autoload', 'health-radar' ),
 		'icon'  => 'editor-table',
 		'val'   => absint( $score['autoload'] ),
 		'max'   => WPHM_Health_Scorer::AUTOLOAD_MAX,
 		'raw'   => absint( $score['raw']['autoload_size'] ),
-		'unit'  => __( 'loaded', 'wp-plugin-health-monitor' ),
+		'unit'  => __( 'loaded', 'health-radar' ),
 		'color' => '#ff5630',
 	),
 );
@@ -116,15 +116,15 @@ $wphm_dimensions = array(
 				<div class="wphm-dash__scan-action">
 					<button type="button" id="wphm-run-scan" class="wphm-dash__scan-btn">
 						<span class="dashicons dashicons-image-rotate"></span>
-						<?php esc_html_e( 'Run Full Scan', 'wp-plugin-health-monitor' ); ?>
+						<?php esc_html_e( 'Run Full Scan', 'health-radar' ); ?>
 					</button>
 					<span id="wphm-scan-status" class="wphm-dash__scan-status"></span>
 				</div>
 			</div>
 
 			<div class="wphm-dash__hero-right">
-				<h1 class="wphm-dash__heading"><?php esc_html_e( 'Health Radar', 'wp-plugin-health-monitor' ); ?></h1>
-				<p class="wphm-dash__subheading"><?php esc_html_e( 'Real-time overview of your WordPress plugin ecosystem health.', 'wp-plugin-health-monitor' ); ?></p>
+				<h1 class="wphm-dash__heading"><?php esc_html_e( 'Health Radar', 'health-radar' ); ?></h1>
+				<p class="wphm-dash__subheading"><?php esc_html_e( 'Real-time overview of your WordPress plugin ecosystem health.', 'health-radar' ); ?></p>
 
 				<!-- Dimension Bars -->
 				<div class="wphm-dash__dims" id="wphm-dims">
@@ -135,7 +135,7 @@ $wphm_dimensions = array(
 						? size_format( $wphm_dim['raw'], 1 ) . ' ' . $wphm_dim['unit']
 						: absint( $wphm_dim['raw'] ) . ' ' . $wphm_dim['unit'];
 					if ( $wphm_nodata && 0 === $wphm_dim['raw'] ) {
-						$wphm_raw = __( 'SAVEQUERIES not enabled', 'wp-plugin-health-monitor' );
+						$wphm_raw = __( 'SAVEQUERIES not enabled', 'health-radar' );
 						}
 					?>
 				<div class="wphm-dash__dim" data-key="<?php echo esc_attr( $wphm_dim['key'] ); ?>">
@@ -165,8 +165,8 @@ $wphm_dimensions = array(
 					<span class="dashicons dashicons-warning"></span>
 				</div>
 				<div class="wphm-dash__card-body">
-					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Plugin Conflicts', 'wp-plugin-health-monitor' ); ?></h3>
-					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Detect hook collisions & duplicate registrations', 'wp-plugin-health-monitor' ); ?></p>
+					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Plugin Conflicts', 'health-radar' ); ?></h3>
+					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Detect hook collisions & duplicate registrations', 'health-radar' ); ?></p>
 				</div>
 				<span class="wphm-dash__card-arrow dashicons dashicons-arrow-right-alt2"></span>
 			</a>
@@ -176,8 +176,8 @@ $wphm_dimensions = array(
 					<span class="dashicons dashicons-performance"></span>
 				</div>
 				<div class="wphm-dash__card-body">
-					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Performance', 'wp-plugin-health-monitor' ); ?></h3>
-					<p class="wphm-dash__card-desc"><?php esc_html_e( 'DB queries, autoload size & asset weight', 'wp-plugin-health-monitor' ); ?></p>
+					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Performance', 'health-radar' ); ?></h3>
+					<p class="wphm-dash__card-desc"><?php esc_html_e( 'DB queries, autoload size & asset weight', 'health-radar' ); ?></p>
 				</div>
 				<span class="wphm-dash__card-arrow dashicons dashicons-arrow-right-alt2"></span>
 			</a>
@@ -187,8 +187,8 @@ $wphm_dimensions = array(
 					<span class="dashicons dashicons-editor-code"></span>
 				</div>
 				<div class="wphm-dash__card-body">
-					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'PHP Compatibility', 'wp-plugin-health-monitor' ); ?></h3>
-					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Version requirements & deprecated functions', 'wp-plugin-health-monitor' ); ?></p>
+					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'PHP Compatibility', 'health-radar' ); ?></h3>
+					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Version requirements & deprecated functions', 'health-radar' ); ?></p>
 				</div>
 				<span class="wphm-dash__card-arrow dashicons dashicons-arrow-right-alt2"></span>
 			</a>
@@ -198,8 +198,8 @@ $wphm_dimensions = array(
 					<span class="dashicons dashicons-clipboard"></span>
 				</div>
 				<div class="wphm-dash__card-body">
-					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Debug Log', 'wp-plugin-health-monitor' ); ?></h3>
-					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Error analysis & top-offending plugins', 'wp-plugin-health-monitor' ); ?></p>
+					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Debug Log', 'health-radar' ); ?></h3>
+					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Error analysis & top-offending plugins', 'health-radar' ); ?></p>
 				</div>
 				<span class="wphm-dash__card-arrow dashicons dashicons-arrow-right-alt2"></span>
 			</a>
@@ -209,8 +209,8 @@ $wphm_dimensions = array(
 					<span class="dashicons dashicons-chart-area"></span>
 				</div>
 				<div class="wphm-dash__card-body">
-					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Full Report', 'wp-plugin-health-monitor' ); ?></h3>
-					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Generate & download comprehensive health report', 'wp-plugin-health-monitor' ); ?></p>
+					<h3 class="wphm-dash__card-title"><?php esc_html_e( 'Full Report', 'health-radar' ); ?></h3>
+					<p class="wphm-dash__card-desc"><?php esc_html_e( 'Generate & download comprehensive health report', 'health-radar' ); ?></p>
 				</div>
 				<span class="wphm-dash__card-arrow dashicons dashicons-arrow-right-alt2"></span>
 			</a>

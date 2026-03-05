@@ -20,8 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="dashicons dashicons-performance"></span>
 			</div>
 			<div class="wphm-page-header__text">
-				<h1 class="wphm-page-header__title"><?php esc_html_e( 'Performance Insights', 'wp-plugin-health-monitor' ); ?></h1>
-				<p class="wphm-page-header__desc"><?php esc_html_e( 'Review enqueued assets, database queries, and autoloaded options.', 'wp-plugin-health-monitor' ); ?></p>
+				<h1 class="wphm-page-header__title"><?php esc_html_e( 'Performance Insights', 'health-radar' ); ?></h1>
+				<p class="wphm-page-header__desc"><?php esc_html_e( 'Review enqueued assets, database queries, and autoloaded options.', 'health-radar' ); ?></p>
 			</div>
 		</div>
 		<div class="wphm-page-header__actions">
@@ -29,9 +29,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				class="wphm-btn-primary"
 				data-wphm-action="wphm_get_performance"
 				data-wphm-target="wphm-performance-results"
-				data-wphm-label="<?php esc_attr_e( 'Refresh Performance Data', 'wp-plugin-health-monitor' ); ?>">
+				data-wphm-label="<?php esc_attr_e( 'Refresh Performance Data', 'health-radar' ); ?>">
 				<span class="dashicons dashicons-update"></span>
-				<?php esc_html_e( 'Refresh Performance Data', 'wp-plugin-health-monitor' ); ?>
+				<?php esc_html_e( 'Refresh Performance Data', 'health-radar' ); ?>
 			</button>
 		</div>
 	</div>
@@ -40,12 +40,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="wphm-alert wphm-alert--warning">
 			<span class="dashicons dashicons-info-outline"></span>
 			<div class="wphm-alert__body">
-				<p class="wphm-alert__title"><?php esc_html_e( 'SAVEQUERIES Not Enabled', 'wp-plugin-health-monitor' ); ?></p>
+				<p class="wphm-alert__title"><?php esc_html_e( 'SAVEQUERIES Not Enabled', 'health-radar' ); ?></p>
 				<p>
 					<?php
 					esc_html_e(
 						'Database query count will not be available. To enable it, add define( \'SAVEQUERIES\', true ); to wp-config.php (not recommended for production).',
-						'wp-plugin-health-monitor'
+						'health-radar'
 					);
 					?>
 				</p>
@@ -57,14 +57,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="wphm-alert wphm-alert--info">
 			<span class="dashicons dashicons-info-outline"></span>
 			<div class="wphm-alert__body">
-				<p><?php esc_html_e( 'Click "Refresh Performance Data" to collect current metrics.', 'wp-plugin-health-monitor' ); ?></p>
+				<p><?php esc_html_e( 'Click "Refresh Performance Data" to collect current metrics.', 'health-radar' ); ?></p>
 			</div>
 		</div>
 	</div>
 
 	<div class="wphm-section-title">
 		<span class="dashicons dashicons-database"></span>
-		<?php esc_html_e( 'Top Autoloaded Options', 'wp-plugin-health-monitor' ); ?>
+		<?php esc_html_e( 'Top Autoloaded Options', 'health-radar' ); ?>
 	</div>
 	<div class="wphm-table-wrap">
 		<?php
@@ -80,8 +80,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<table class="wphm-table">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Option Name', 'wp-plugin-health-monitor' ); ?></th>
-						<th><?php esc_html_e( 'Size', 'wp-plugin-health-monitor' ); ?></th>
+						<th><?php esc_html_e( 'Option Name', 'health-radar' ); ?></th>
+						<th><?php esc_html_e( 'Size', 'health-radar' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</tbody>
 			</table>
 		<?php else : ?>
-			<div class="wphm-loading"><p><?php esc_html_e( 'No autoloaded options found.', 'wp-plugin-health-monitor' ); ?></p></div>
+			<div class="wphm-loading"><p><?php esc_html_e( 'No autoloaded options found.', 'health-radar' ); ?></p></div>
 		<?php endif; ?>
 	</div>
 </div>

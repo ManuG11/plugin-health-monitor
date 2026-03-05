@@ -67,8 +67,8 @@ class WPHM_Admin_Menu {
 	 */
 	public function add_menu_pages(): void {
 		add_menu_page(
-			__( 'Health Radar', 'wp-plugin-health-monitor' ),
-			__( 'Health Radar', 'wp-plugin-health-monitor' ),
+			__( 'Health Radar', 'health-radar' ),
+			__( 'Health Radar', 'health-radar' ),
 			self::CAPABILITY,
 			self::MENU_SLUG,
 			array( $this, 'render_dashboard' ),
@@ -78,8 +78,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'Dashboard', 'wp-plugin-health-monitor' ),
-			__( 'Dashboard', 'wp-plugin-health-monitor' ),
+			__( 'Dashboard', 'health-radar' ),
+			__( 'Dashboard', 'health-radar' ),
 			self::CAPABILITY,
 			self::MENU_SLUG,
 			array( $this, 'render_dashboard' )
@@ -87,8 +87,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'Plugin Conflicts', 'wp-plugin-health-monitor' ),
-			__( 'Conflicts', 'wp-plugin-health-monitor' ),
+			__( 'Plugin Conflicts', 'health-radar' ),
+			__( 'Conflicts', 'health-radar' ),
 			self::CAPABILITY,
 			'wphm-conflicts',
 			array( $this, 'render_conflicts' )
@@ -96,8 +96,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'Performance', 'wp-plugin-health-monitor' ),
-			__( 'Performance', 'wp-plugin-health-monitor' ),
+			__( 'Performance', 'health-radar' ),
+			__( 'Performance', 'health-radar' ),
 			self::CAPABILITY,
 			'wphm-performance',
 			array( $this, 'render_performance' )
@@ -105,8 +105,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'PHP Compatibility', 'wp-plugin-health-monitor' ),
-			__( 'PHP Compat', 'wp-plugin-health-monitor' ),
+			__( 'PHP Compatibility', 'health-radar' ),
+			__( 'PHP Compat', 'health-radar' ),
 			self::CAPABILITY,
 			'wphm-php-compat',
 			array( $this, 'render_php_compat' )
@@ -114,8 +114,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'Debug Log', 'wp-plugin-health-monitor' ),
-			__( 'Debug Log', 'wp-plugin-health-monitor' ),
+			__( 'Debug Log', 'health-radar' ),
+			__( 'Debug Log', 'health-radar' ),
 			self::CAPABILITY,
 			'wphm-debug-log',
 			array( $this, 'render_debug_log' )
@@ -123,8 +123,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'Health Report', 'wp-plugin-health-monitor' ),
-			__( 'Report', 'wp-plugin-health-monitor' ),
+			__( 'Health Report', 'health-radar' ),
+			__( 'Report', 'health-radar' ),
 			self::CAPABILITY,
 			'wphm-report',
 			array( $this, 'render_report' )
@@ -132,8 +132,8 @@ class WPHM_Admin_Menu {
 
 		add_submenu_page(
 			self::MENU_SLUG,
-			__( 'Documentation', 'wp-plugin-health-monitor' ),
-			__( 'Documentation ↗', 'wp-plugin-health-monitor' ),
+			__( 'Documentation', 'health-radar' ),
+			__( 'Documentation ↗', 'health-radar' ),
 			self::CAPABILITY,
 			'wphm-documentation',
 			array( $this, 'render_docs_redirect' )
@@ -149,11 +149,11 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_docs_redirect(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 		?>
 		<div class="wrap">
-			<p><?php esc_html_e( 'Redirecting to documentation…', 'wp-plugin-health-monitor' ); ?> <a href="https://fzihak.github.io/plugin-health-monitor/"><?php esc_html_e( 'Click here if not redirected.', 'wp-plugin-health-monitor' ); ?></a></p>
+			<p><?php esc_html_e( 'Redirecting to documentation…', 'health-radar' ); ?> <a href="https://fzihak.github.io/plugin-health-monitor/"><?php esc_html_e( 'Click here if not redirected.', 'health-radar' ); ?></a></p>
 		</div>
 		<script>window.location.replace( 'https://fzihak.github.io/plugin-health-monitor/' );</script>
 		<?php
@@ -219,10 +219,10 @@ class WPHM_Admin_Menu {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( self::NONCE_ACTION ),
 				'i18n'    => array(
-					'scanning'  => __( 'Scanning…', 'wp-plugin-health-monitor' ),
-					'completed' => __( 'Scan complete.', 'wp-plugin-health-monitor' ),
-					'error'     => __( 'An error occurred. Please try again.', 'wp-plugin-health-monitor' ),
-					'noData'    => __( 'No data available. Run a scan first.', 'wp-plugin-health-monitor' ),
+					'scanning'  => __( 'Scanning…', 'health-radar' ),
+					'completed' => __( 'Scan complete.', 'health-radar' ),
+					'error'     => __( 'An error occurred. Please try again.', 'health-radar' ),
+					'noData'    => __( 'No data available. Run a scan first.', 'health-radar' ),
 				),
 			)
 		);
@@ -235,7 +235,7 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_dashboard(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 
 		$scorer = new WPHM_Health_Scorer();
@@ -251,7 +251,7 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_conflicts(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 
 		include WPHM_PLUGIN_DIR . 'admin/views/conflicts.php';
@@ -264,7 +264,7 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_performance(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 
 		include WPHM_PLUGIN_DIR . 'admin/views/performance.php';
@@ -277,7 +277,7 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_php_compat(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 
 		include WPHM_PLUGIN_DIR . 'admin/views/php-compat.php';
@@ -290,7 +290,7 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_debug_log(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 
 		include WPHM_PLUGIN_DIR . 'admin/views/debug-log.php';
@@ -303,7 +303,7 @@ class WPHM_Admin_Menu {
 	 */
 	public function render_report(): void {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-plugin-health-monitor' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'health-radar' ) );
 		}
 
 		include WPHM_PLUGIN_DIR . 'admin/views/report.php';
@@ -322,7 +322,7 @@ class WPHM_Admin_Menu {
 
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'wp-plugin-health-monitor' ) ),
+				array( 'message' => __( 'Permission denied.', 'health-radar' ) ),
 				403
 			);
 		}
@@ -361,7 +361,7 @@ class WPHM_Admin_Menu {
 
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'wp-plugin-health-monitor' ) ),
+				array( 'message' => __( 'Permission denied.', 'health-radar' ) ),
 				403
 			);
 		}
@@ -382,7 +382,7 @@ class WPHM_Admin_Menu {
 
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'wp-plugin-health-monitor' ) ),
+				array( 'message' => __( 'Permission denied.', 'health-radar' ) ),
 				403
 			);
 		}
@@ -403,7 +403,7 @@ class WPHM_Admin_Menu {
 
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'wp-plugin-health-monitor' ) ),
+				array( 'message' => __( 'Permission denied.', 'health-radar' ) ),
 				403
 			);
 		}
@@ -424,7 +424,7 @@ class WPHM_Admin_Menu {
 
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'wp-plugin-health-monitor' ) ),
+				array( 'message' => __( 'Permission denied.', 'health-radar' ) ),
 				403
 			);
 		}
@@ -445,7 +445,7 @@ class WPHM_Admin_Menu {
 
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'wp-plugin-health-monitor' ) ),
+				array( 'message' => __( 'Permission denied.', 'health-radar' ) ),
 				403
 			);
 		}

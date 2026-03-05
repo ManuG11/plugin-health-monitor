@@ -341,18 +341,18 @@ class WPHM_Health_Scorer {
 	 */
 	public function get_score_label( int $score ): string {
 		if ( $score >= 80 ) {
-			return __( 'Excellent', 'wp-plugin-health-monitor' );
+			return __( 'Excellent', 'health-radar' );
 		}
 		if ( $score >= 60 ) {
-			return __( 'Good', 'wp-plugin-health-monitor' );
+			return __( 'Good', 'health-radar' );
 		}
 		if ( $score >= 40 ) {
-			return __( 'Fair', 'wp-plugin-health-monitor' );
+			return __( 'Fair', 'health-radar' );
 		}
 		if ( $score >= 20 ) {
-			return __( 'Poor', 'wp-plugin-health-monitor' );
+			return __( 'Poor', 'health-radar' );
 		}
-		return __( 'Critical', 'wp-plugin-health-monitor' );
+		return __( 'Critical', 'health-radar' );
 	}
 
 	/**

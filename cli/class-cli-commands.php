@@ -41,7 +41,7 @@ class WPHM_CLI_Commands {
 	 * @return void
 	 */
 	public function scan( array $args, array $assoc_args ): void {
-		WP_CLI::log( __( 'Running full health scan…', 'wp-plugin-health-monitor' ) );
+		WP_CLI::log( __( 'Running full health scan…', 'health-radar' ) );
 
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -57,7 +57,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: %d: Health score. */
-				__( 'Health Score: %d/100', 'wp-plugin-health-monitor' ),
+				__( 'Health Score: %d/100', 'health-radar' ),
 				$health['total']
 			)
 		);
@@ -67,7 +67,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: %d: Number of conflicts. */
-				__( 'Conflicts found: %d', 'wp-plugin-health-monitor' ),
+				__( 'Conflicts found: %d', 'health-radar' ),
 				$conflict_count
 			)
 		);
@@ -79,7 +79,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: %d: Number of duplicate assets. */
-				__( 'Duplicate assets: %d', 'wp-plugin-health-monitor' ),
+				__( 'Duplicate assets: %d', 'health-radar' ),
 				$dup_count
 			)
 		);
@@ -94,7 +94,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: %d: Number of incompatible plugins. */
-				__( 'PHP incompatible plugins: %d', 'wp-plugin-health-monitor' ),
+				__( 'PHP incompatible plugins: %d', 'health-radar' ),
 				count( $incompat )
 			)
 		);
@@ -104,17 +104,17 @@ class WPHM_CLI_Commands {
 			WP_CLI::log(
 				sprintf(
 					/* translators: 1: Fatal count, 2: Warning count, 3: Notice count. */
-					__( 'Debug log: %1$d fatal, %2$d warnings, %3$d notices', 'wp-plugin-health-monitor' ),
+					__( 'Debug log: %1$d fatal, %2$d warnings, %3$d notices', 'health-radar' ),
 					$debug['summary']['fatal'],
 					$debug['summary']['warning'],
 					$debug['summary']['notice']
 				)
 			);
 		} else {
-			WP_CLI::log( __( 'Debug log: not found', 'wp-plugin-health-monitor' ) );
+			WP_CLI::log( __( 'Debug log: not found', 'health-radar' ) );
 		}
 
-		WP_CLI::success( __( 'Full scan complete.', 'wp-plugin-health-monitor' ) );
+		WP_CLI::success( __( 'Full scan complete.', 'health-radar' ) );
 	}
 
 	/**
@@ -151,32 +151,32 @@ class WPHM_CLI_Commands {
 
 		// Table format summary.
 		WP_CLI::log( '' );
-		WP_CLI::log( __( '=== WP Plugin Health Report ===', 'wp-plugin-health-monitor' ) );
+		WP_CLI::log( __( '=== WP Plugin Health Report ===', 'health-radar' ) );
 		WP_CLI::log(
 			sprintf(
 				/* translators: %s: Generation timestamp. */
-				__( 'Generated: %s', 'wp-plugin-health-monitor' ),
+				__( 'Generated: %s', 'health-radar' ),
 				$report['generated_at']
 			)
 		);
 		WP_CLI::log(
 			sprintf(
 				/* translators: %s: WordPress version. */
-				__( 'WordPress: %s', 'wp-plugin-health-monitor' ),
+				__( 'WordPress: %s', 'health-radar' ),
 				$report['wordpress']
 			)
 		);
 		WP_CLI::log(
 			sprintf(
 				/* translators: %s: PHP version. */
-				__( 'PHP: %s', 'wp-plugin-health-monitor' ),
+				__( 'PHP: %s', 'health-radar' ),
 				$report['php_version']
 			)
 		);
 		WP_CLI::log(
 			sprintf(
 				/* translators: %d: Health score. */
-				__( 'Health Score: %d/100', 'wp-plugin-health-monitor' ),
+				__( 'Health Score: %d/100', 'health-radar' ),
 				$report['health_score']['total']
 			)
 		);
@@ -185,22 +185,22 @@ class WPHM_CLI_Commands {
 		// Score breakdown.
 		$score_data = array(
 			array(
-				'dimension' => __( 'Plugins', 'wp-plugin-health-monitor' ),
+				'dimension' => __( 'Plugins', 'health-radar' ),
 				'score'     => $report['health_score']['plugins'],
 				'max'       => WPHM_Health_Scorer::PLUGIN_MAX,
 			),
 			array(
-				'dimension' => __( 'Assets', 'wp-plugin-health-monitor' ),
+				'dimension' => __( 'Assets', 'health-radar' ),
 				'score'     => $report['health_score']['assets'],
 				'max'       => WPHM_Health_Scorer::ASSET_MAX,
 			),
 			array(
-				'dimension' => __( 'DB Queries', 'wp-plugin-health-monitor' ),
+				'dimension' => __( 'DB Queries', 'health-radar' ),
 				'score'     => $report['health_score']['db_queries'],
 				'max'       => WPHM_Health_Scorer::DB_QUERY_MAX,
 			),
 			array(
-				'dimension' => __( 'Autoload', 'wp-plugin-health-monitor' ),
+				'dimension' => __( 'Autoload', 'health-radar' ),
 				'score'     => $report['health_score']['autoload'],
 				'max'       => WPHM_Health_Scorer::AUTOLOAD_MAX,
 			),
@@ -208,7 +208,7 @@ class WPHM_CLI_Commands {
 
 		WP_CLI\Utils\format_items( 'table', $score_data, array( 'dimension', 'score', 'max' ) );
 
-		WP_CLI::success( __( 'Report complete.', 'wp-plugin-health-monitor' ) );
+		WP_CLI::success( __( 'Report complete.', 'health-radar' ) );
 	}
 
 	/**
@@ -229,7 +229,7 @@ class WPHM_CLI_Commands {
 		$items = array_merge( $results['duplicate_assets'], $results['hook_conflicts'] );
 
 		if ( empty( $items ) ) {
-			WP_CLI::success( __( 'No plugin conflicts detected.', 'wp-plugin-health-monitor' ) );
+			WP_CLI::success( __( 'No plugin conflicts detected.', 'health-radar' ) );
 			return;
 		}
 
@@ -264,7 +264,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: 1: Score total, 2: Score label. */
-				__( 'Health Score: %1$d/100 (%2$s)', 'wp-plugin-health-monitor' ),
+				__( 'Health Score: %1$d/100 (%2$s)', 'health-radar' ),
 				$score['total'],
 				$scorer->get_score_label( $score['total'] )
 			)
@@ -272,7 +272,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: 1: Plugins score, 2: Max. */
-				__( '  Plugins:    %1$d/%2$d', 'wp-plugin-health-monitor' ),
+				__( '  Plugins:    %1$d/%2$d', 'health-radar' ),
 				$score['plugins'],
 				WPHM_Health_Scorer::PLUGIN_MAX
 			)
@@ -280,7 +280,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: 1: Assets score, 2: Max. */
-				__( '  Assets:     %1$d/%2$d', 'wp-plugin-health-monitor' ),
+				__( '  Assets:     %1$d/%2$d', 'health-radar' ),
 				$score['assets'],
 				WPHM_Health_Scorer::ASSET_MAX
 			)
@@ -288,7 +288,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: 1: DB queries score, 2: Max. */
-				__( '  DB Queries: %1$d/%2$d', 'wp-plugin-health-monitor' ),
+				__( '  DB Queries: %1$d/%2$d', 'health-radar' ),
 				$score['db_queries'],
 				WPHM_Health_Scorer::DB_QUERY_MAX
 			)
@@ -296,7 +296,7 @@ class WPHM_CLI_Commands {
 		WP_CLI::log(
 			sprintf(
 				/* translators: 1: Autoload score, 2: Max. */
-				__( '  Autoload:   %1$d/%2$d', 'wp-plugin-health-monitor' ),
+				__( '  Autoload:   %1$d/%2$d', 'health-radar' ),
 				$score['autoload'],
 				WPHM_Health_Scorer::AUTOLOAD_MAX
 			)
@@ -330,14 +330,14 @@ class WPHM_CLI_Commands {
 		$entries = $reader->get_last_entries( $count );
 
 		if ( empty( $entries ) ) {
-			WP_CLI::log( __( 'No debug log entries found, or debug.log does not exist.', 'wp-plugin-health-monitor' ) );
+			WP_CLI::log( __( 'No debug log entries found, or debug.log does not exist.', 'health-radar' ) );
 			return;
 		}
 
 		WP_CLI::log(
 			sprintf(
 				/* translators: %d: Number of entries shown. */
-				__( 'Last %d debug log entries:', 'wp-plugin-health-monitor' ),
+				__( 'Last %d debug log entries:', 'health-radar' ),
 				count( $entries )
 			)
 		);
