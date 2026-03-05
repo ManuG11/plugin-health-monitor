@@ -81,6 +81,49 @@ Scripts load twice. Hooks collide. Deprecated functions throw warnings. PHP vers
 
 ---
 
+## Screenshots
+
+<table>
+<tr>
+<td align="center" width="50%">
+<b>Dashboard</b><br>
+<sub>Overall Health Score and module summary</sub><br><br>
+<img src="screenshots/dashboard.png" alt="Dashboard" width="100%">
+</td>
+<td align="center" width="50%">
+<b>Conflicts</b><br>
+<sub>Duplicate script handles and hook collisions</sub><br><br>
+<img src="screenshots/conflicts.png" alt="Conflicts" width="100%">
+</td>
+</tr>
+<tr>
+<td align="center">
+<b>Performance</b><br>
+<sub>Asset count, DB queries, autoload bloat, Health Score</sub><br><br>
+<img src="screenshots/performance.png" alt="Performance" width="100%">
+</td>
+<td align="center">
+<b>PHP Compatibility</b><br>
+<sub>Per-plugin PHP requirements vs. active server version</sub><br><br>
+<img src="screenshots/php-compat.png" alt="PHP Compatibility" width="100%">
+</td>
+</tr>
+<tr>
+<td align="center">
+<b>Debug Log</b><br>
+<sub>Log entries grouped by plugin and error severity</sub><br><br>
+<img src="screenshots/debug-log.png" alt="Debug Log" width="100%">
+</td>
+<td align="center">
+<b>Health Report</b><br>
+<sub>Full report — export JSON/TXT or print to PDF</sub><br><br>
+<img src="screenshots/report.png" alt="Health Report" width="100%">
+</td>
+</tr>
+</table>
+
+---
+
 ## Requirements
 
 | | Minimum |
